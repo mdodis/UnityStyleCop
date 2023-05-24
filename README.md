@@ -7,7 +7,7 @@
 dotnet tool install --global rookxx.stylecopanalyzers-cli
 ```
 
-## Change git config path
+**Change git config path**
 
 ```
 git config core.hooksPath "git-hooks/"

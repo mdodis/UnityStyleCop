@@ -8,7 +8,7 @@ public class ExampleScript : MonoBehaviour
     void Start()
     {
         int a = 10;
-        
+        int b = 20;
     }
 
     // Update is called once per frame

@@ -1,0 +1,13 @@
+#!/bin/sh
+echo "Running Code Analysis"
+
+output=$(style check ./StyleCop.sln -r ./Assets/StyleCop/RequiredPackages/UnityStyleCop.ruleset)
+if [ -n "$output" ]
+    then
+        echo Commit Failed!
+        echo "$output"
+        exit 1
+    else
+        echo No SyleCop Errors!
+        exit 0
+fi

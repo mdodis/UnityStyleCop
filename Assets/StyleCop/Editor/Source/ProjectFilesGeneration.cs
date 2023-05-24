@@ -1,18 +1,18 @@
 namespace StyleCop.Analyzer
 {
-	using System;
-	using System.Collections.Generic;
-	using System.IO;
-	using System.Linq;
-	using System.Text;
-	using System.Xml.Linq;
-	using UnityEditor;
-	using UnityEngine;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Xml.Linq;
+    using UnityEditor;
+    using UnityEngine;
 
 	/// <summary>
 	/// Customize the project file generation with Roslyn Analyzers and custom c# version.
 	/// </summary>
-	public class ProjectFilesGeneration : AssetPostprocessor
+    public class ProjectFilesGeneration : AssetPostprocessor
 	{
 		private const string DefaultDirectory = "Assets/StyleCop/RequiredPackages";
 		private const string StyleCopAnalyzerDllName = "StyleCop.Analyzers.dll";
@@ -77,7 +77,9 @@ namespace StyleCop.Analyzer
 				return;
 			}
 
-			var requiredFilesDirectoryInfo = new DirectoryInfo(Path.Combine(currentDirectory, DefaultDirectory));
+			string directory = $"{Application.dataPath}/StyleCop/RequiredPackages/";
+
+			var requiredFilesDirectoryInfo = new DirectoryInfo(directory);
 			FileInfo[] files = requiredFilesDirectoryInfo.GetFiles();
 			var itemGroup = new XElement(xmlNameSpace + "ItemGroup");
 			foreach (FileInfo file in files)
@@ -88,14 +90,6 @@ namespace StyleCop.Analyzer
 					case ".dll":
 					{
 						var reference = new XElement(xmlNameSpace + "Analyzer");
-						reference.Add(new XAttribute("Include", file));
-						itemGroup.Add(reference);
-						break;
-					}
-
-					case ".json":
-					{
-						var reference = new XElement(xmlNameSpace + "AdditionalFiles");
 						reference.Add(new XAttribute("Include", file));
 						itemGroup.Add(reference);
 						break;

@@ -13,7 +13,12 @@ dotnet tool install --global rookxx.stylecopanalyzers-cli
 git config core.hooksPath "git-hooks/"
 ```
 
-**Running StyleCop CLI Manually**
+## Miscellaneous
+
+- Can't we make this more automated?
+- No. The folder `.git/hooks` can never be tracked and is local *to your repo instance*.
+
+**Run StyleCop Manually**
 
 ```
 style check -r ./Assets/StyleCop/RequiredPackages/UnityStyleCop.ruleset ./StyleCop.sln

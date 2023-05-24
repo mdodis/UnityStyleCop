@@ -15,5 +15,7 @@ public class ASimpleScript : MonoBehaviour
         var currentPosition = transform.position;
         currentPosition.x += Time.deltaTime * 1.0f;
         transform.position = currentPosition;
+
+        var random = 2;
     }
 }
